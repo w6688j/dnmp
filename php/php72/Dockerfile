@@ -44,7 +44,7 @@ RUN apt-get update \
     && docker-php-ext-install sysvmsg \
     && docker-php-ext-install sysvsem \
     && docker-php-ext-install sysvshm \
-    && docker-php-ext-install opcache \
+    && docker-php-ext-install opcache
     #&& docker-php-ext-install pdo_firebird \
     #&& docker-php-ext-install pdo_dblib \
     #&& docker-php-ext-install pdo_oci \
@@ -58,14 +58,11 @@ RUN apt-get update \
     #&& :\
     #&& apt-get install -y libmcrypt-dev \
     #&& docker-php-ext-install mcrypt \
-    && :\
-    && apt-get install -y curl \
-    && apt-get install -y libcurl3 \
-    && apt-get install -y libcurl4-openssl-dev \
-    && docker-php-ext-install curl \
-    && :\
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug
+    #&& :\
+    #&& apt-get install -y curl \
+    #&& apt-get install -y libcurl3 \
+    #&& apt-get install -y libcurl4-openssl-dev \
+    #&& docker-php-ext-install curl \
     #&& :\
     #&& apt-get install -y libreadline-dev \
     #&& docker-php-ext-install readline \
@@ -102,4 +99,4 @@ RUN apt-get update \
     #&& docker-php-ext-install ldap \
 
 # Composer
-# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
