@@ -17,6 +17,8 @@ services:
   php:
     build: ./php/php72/
     container_name: dnmp-php
+    ports:
+      - "9001:9001"
     expose:
       - "9000"
     volumes:

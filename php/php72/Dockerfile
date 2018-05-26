@@ -2,6 +2,8 @@ FROM php:7.2-fpm
 
 COPY ./sources.list.stretch /etc/apt/sources.list
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Extensions: ctype, dom, fileinfo, ftp, hash, iconv, json, pdo, pdo_sqlite, session,
 # tokenizer, simplexml, xml, xmlreader, xmlwriter and phar are bundled and compiled into
 # PHP by default. If missing, install them directly by `docker-php-ext-install extension_name`
@@ -13,6 +15,7 @@ COPY ./sources.list.stretch /etc/apt/sources.list
 # 4. xml, xmlrpc, wddx require libxml2-dev and libxslt-dev.
 # 5. Line `&& :\` is just for better reading and do nothing.
 RUN apt-get update \
+    && apt-get install -y apt-utils \
     && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
@@ -44,7 +47,7 @@ RUN apt-get update \
     && docker-php-ext-install sysvmsg \
     && docker-php-ext-install sysvsem \
     && docker-php-ext-install sysvshm \
-    && docker-php-ext-install opcache
+    && docker-php-ext-install opcache \
     #&& docker-php-ext-install pdo_firebird \
     #&& docker-php-ext-install pdo_dblib \
     #&& docker-php-ext-install pdo_oci \
@@ -58,11 +61,14 @@ RUN apt-get update \
     #&& :\
     #&& apt-get install -y libmcrypt-dev \
     #&& docker-php-ext-install mcrypt \
-    #&& :\
-    #&& apt-get install -y curl \
-    #&& apt-get install -y libcurl3 \
-    #&& apt-get install -y libcurl4-openssl-dev \
-    #&& docker-php-ext-install curl \
+    && :\
+    && apt-get install -y curl \
+    && apt-get install -y libcurl3 \
+    && apt-get install -y libcurl4-openssl-dev \
+    && docker-php-ext-install curl \
+    && :\
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
     #&& :\
     #&& apt-get install -y libreadline-dev \
     #&& docker-php-ext-install readline \
