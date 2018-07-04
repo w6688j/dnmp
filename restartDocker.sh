@@ -7,5 +7,6 @@ if [ $1 == "reload" ]; then
     docker images -a
 fi
 service docker restart
-docker-compose up -d
+docker-compose build -t
+docker-compose up
 docker ps
