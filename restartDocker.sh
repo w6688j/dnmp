@@ -8,5 +8,5 @@ if [ $1 == "reload" ]; then
 fi
 service docker restart
 docker-compose build -t
-docker-compose up
+docker-compose up -d
 docker ps
