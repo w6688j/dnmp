@@ -65,10 +65,7 @@ RUN apt-get update \
     && apt-get install -y curl \
     && apt-get install -y libcurl3 \
     && apt-get install -y libcurl4-openssl-dev \
-    && docker-php-ext-install curl \
-    && :\
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug
+    && docker-php-ext-install curl
     #&& :\
     #&& apt-get install -y libreadline-dev \
     #&& docker-php-ext-install readline \
