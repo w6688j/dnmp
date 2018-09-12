@@ -88,6 +88,6 @@ MIT
 
 ## 7. MySQL报错2059 ： caching_sha2_password
 解决此问题有两种方法，一种是更新navicat驱动来解决此问题，一种是将mysql用户登录的加密规则修改为mysql_native_password。本文采用第二种方式。
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; #修改加密规则  
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';  #更新一下用户的密码
+ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; #修改加密规则  
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';  #更新一下用户的密码
 FLUSH PRIVILEGES; #刷新权限
