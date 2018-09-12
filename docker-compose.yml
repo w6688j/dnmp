@@ -41,7 +41,7 @@ services:
     networks:
       - net-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_ROOT_PASSWORD: "Wj6688!@."
 
   redis:
     image: redis:latest
