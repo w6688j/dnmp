@@ -51,40 +51,40 @@ services:
     ports:
       - "6379:6379"
 
-  node:
-    build:
-      context: ./node
-      args:
-        - NODE_VERSION=8.11.3
-        - PROJECT_PATH=/opt/app/
-        - NODE_ENV=production
-        - YARN=true
-    container_name: dnmp_node
-    ports:
-      - "8100:8100"
-    volumes:
-      - /home/httpd/node/:/opt/app
-    entrypoint: run-nodock "node index.js"
-    networks:
-      - net-node
+#  node:
+#    build:
+#      context: ./node
+#      args:
+#        - NODE_VERSION=8.11.3
+#        - PROJECT_PATH=/opt/app/
+#        - NODE_ENV=production
+#        - YARN=true
+#    container_name: dnmp_node
+#    ports:
+#      - "8100:8100"
+#    volumes:
+#      - /home/httpd/node/:/opt/app
+#    entrypoint: run-nodock "node index.js"
+#    networks:
+#      - net-node
 
 # tomcat
-  tomcat:
-    build: ./tomcat
-    container_name: dnmp-tomcat
-    links:
-      -  mysql:mysql
-    ports:
-      - "8080:8080"
-    volumes:
-      - /home/httpd/tomcat/developer/git-repository:/developer/git-repository
-      - /home/httpd/tomcat/product:/product
-    networks:
-      - net-tomcat
+#  tomcat:
+#    build: ./tomcat
+#    container_name: dnmp-tomcat
+#    links:
+#      -  mysql:mysql
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - /home/httpd/tomcat/developer/git-repository:/developer/git-repository
+#      - /home/httpd/tomcat/product:/product
+#    networks:
+#      - net-tomcat
 
 networks:
   net-php:
   net-mysql:
   net-redis:
-  net-node:
-  net-tomcat:
+#  net-node:
+#  net-tomcat:

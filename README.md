@@ -91,3 +91,8 @@ MIT
 ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER; #修改加密规则  
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';  #更新一下用户的密码
 FLUSH PRIVILEGES; #刷新权限
+
+## 8.MySQL server has gone away
+在my.cnf中的
+[mysqld]模块下添加
+default-authentication-plugin = mysql_native_password
