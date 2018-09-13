@@ -68,8 +68,23 @@ services:
     networks:
       - net-node
 
+# tomcat
+  tomcat:
+    build: ./tomcat
+    container_name: dnmp-tomcat
+    links:
+      -  mysql:mysql
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/httpd/tomcat/developer/git-repository:/developer/git-repository
+      - /home/httpd/tomcat/product:/product
+    networks:
+      - net-tomcat
+
 networks:
   net-php:
   net-mysql:
   net-redis:
   net-node:
+  net-tomcat:
